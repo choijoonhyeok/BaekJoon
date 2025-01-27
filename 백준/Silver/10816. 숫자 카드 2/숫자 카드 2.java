@@ -18,7 +18,7 @@ public class Main {
         	int sint = s.nextInt();
         	result.append(ahash.getOrDefault(sint,0)).append(" ");
         }
-        System.out.println(result.toString());
+        System.out.println(result);
         
     }
 }
