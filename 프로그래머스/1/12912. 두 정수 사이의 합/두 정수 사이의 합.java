@@ -1,20 +1,13 @@
 class Solution {
     public long solution(int a, int b) {
-        if(a==b) return a;
-        
-        long answer=0;
-        if(a>b){
-            for(int i =b;i<=a;i++ ){
-                answer +=i;
-            }  
+        long sum = 0;
+        int start = Math.min(a, b);
+        int end = Math.max(a, b);
+
+        for (int i = start; i <= end; i++) {
+            sum += i;
         }
-        else{
-            for(int i =a;i<=b;i++ ){
-                answer +=i;
-            }  
-            
-        }
-   
-        return answer;
+
+        return sum;
     }
 }
