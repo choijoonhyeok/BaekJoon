@@ -1,21 +1,22 @@
-import java.util.*;
 class Solution {
     public int[] solution(long n) {
         
-        String nStr = new StringBuilder(Long.toString(n)).reverse().toString();
-            
-        //     System.out.print(nStr);
-        
-        int[] answer = new int[nStr.length()];
-        
-        String[] nArray = nStr.split("");
-        for(int i=0;i<nStr.length();i++){
-            answer[i] = Integer.parseInt(nArray[i]);
+     int count = 0;
+        long temp = n;
 
+        while (temp > 0) {
+            count++;
+            temp /= 10;
         }
-                
 
-        
+        // 2️⃣ 배열 생성
+        int[] answer = new int[count];
+
+       for (int i = 0; i < count; i++) {
+            answer[i] = (int)(n % 10);
+            n /= 10;
+        }
+
         
         return answer;
     }
