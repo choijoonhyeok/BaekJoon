@@ -1,26 +1,25 @@
 import java.util.*;
 class Solution {
     public int[] solution(int[] arr, int divisor) {
-      
-        List <Integer> result = new ArrayList<>();
+        List<Integer> answer = new ArrayList<>() ;
+        
         
         for(int i=0;i<arr.length;i++){
-            if(arr[i]%divisor==0)
-                result.add(arr[i]);
-
+            if(arr[i]%divisor==0) answer.add(arr[i]);
         }
+        
+        if(answer.size()==0) return new int[]{-1};
+        
+        int answer2[] = new int[answer.size()];
+        for(int i=0;i<answer.size();i++){
+            answer2[i]= answer.get(i);
+        }
+        
+        
+        
+        Arrays.sort(answer2);
     
-        Collections.sort(result);
         
-        if(result.size()==0) return new int[]{-1};
-        int answer[] = new int[result.size()];
-        for(int i=0;i<result.size();i++){
-                answer[i] = result.get(i);
-        }
-        
-        
-        System.out.print(result);
-        
-        return answer;
+        return answer2;
     }
 }
