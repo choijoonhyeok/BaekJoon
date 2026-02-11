@@ -1,33 +1,16 @@
 import java.util.*;
 class Solution {
     public String[] solution(String[] strings, int n) {
-        String[] answer = new String [strings.length];
-        char[] chr =new char [strings.length];
-         Arrays.sort(strings);
+        //String[] answer = {};
         
-        for(int i=0;i<strings.length;i++){
-            chr[i] = strings[i].charAt(n);
-        }
-        Arrays.sort(chr);
-       boolean visited[] = new boolean[strings.length];
-        for(int j=0;j<strings.length;j++){
-            for(int z=0;z<strings.length;z++){
-            if(chr[j]==strings[z].charAt(n)&&!visited[z]){
-                answer[j]=strings[z];
-                visited[z]=true;
-                break;
-            }
+        Arrays.sort(strings,(a,b)->{ 
+            if(a.charAt(n)==b.charAt(n)){return a.compareTo(b);}
             
-
-                }
-            System.out.println(answer[j]);
-        }
+            return a.charAt(n)-b.charAt(n);
+        });
         
         
-
-        //같은문자가 여럿=>사전순으로 앞선문자열이 앞쪽
-            
- 
-        return answer;
+        
+        return strings;
     }
 }
