@@ -1,46 +1,46 @@
+import java.util.*;
 class Solution {
     public int solution(String s) {
         int answer = s.length();
         
-        //s.length()/2 나중에보고 수정
         
-        for(int i=1; i<=s.length()/2;i++){
-            String str ="";
-            int count=1;
+        for(int i=1;i<=s.length();i++){
+            int count =1;
+            StringBuilder sb = new StringBuilder();
             
-            int j=0;
-            for(j=i; j+i<=s.length();j+=i){
+            
+             for(int j=0;j<s.length();j+=i){
                  
-                if(s.substring(j,j+i).equals(s.substring(j-i,j))){
-                    count +=1;
-                    
-                }
-                else{
-                    if(count>1) str += count;
-                    
-                    str += s.substring(j-i,j);
-                    
-                    count=1;
-                    
-                }
+                 String cur;
+                 
+                 if(j+i<=s.length()){
+                    cur=s.substring(j,j+i);
+                 }
+                 else{
+                     cur=s.substring(j);
+                 }
+                 
+                 String next="";
+                    if(j+2*i<=s.length()){
+                      next=  s.substring(j+i,j+2*i);
+                    }
+                 
+                 if(cur.equals(next)){
+                     count++;
+                 }
+                 else{
+                     if(count>1){
+                        sb.append(count);
+                     }
+                     sb.append(cur);
+                 count=1;
+                 }
+                 
                 
-            }
-             if(count > 1) str += count;
-            str += s.substring(j - i, j);
-
-            // 🔴 남은 자투리 처리
-            if(j < s.length()) {
-                str += s.substring(j);
-            }
-            
-           answer = Math.min(answer,str.length());
+                
+             }
+            answer =Math.min(answer,sb.length());
         }
-        
-        
-        
-        
-        
-        
         
         return answer;
     }
