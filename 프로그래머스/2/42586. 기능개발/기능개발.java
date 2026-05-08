@@ -1,41 +1,30 @@
 import java.util.*;
 class Solution {
     public int[] solution(int[] progresses, int[] speeds) {
-        //int answer[] ={};
-        int n = progresses.length;
-        int fArray[] = new int[n];
+        int[] answer = {};
         
-        List<Integer> list = new ArrayList<>();
-        
-        for(int i=0; i<n;i++){
-            int lest = 100-progresses[i];
-            
-            if(lest%speeds[i]>0) fArray[i] = (lest/speeds[i])+1;
-            else fArray[i] = lest/speeds[i];
+        //완료 일 구하기
+        Queue <Integer> queue = new ArrayDeque<>();
+        for(int i=0;i<progresses.length;i++){
+            int endDay = (100-progresses[i]+speeds[i]-1)/speeds[i];
+            queue.offer(endDay);
+           
         }
         
-        int maxDay = fArray[0];
+        
+       List <Integer>answerList = new ArrayList<>(); 
+    while(!queue.isEmpty()){
+        int now = queue.poll();
         int count =1;
-        for(int j=1; j<n;j++){
-            if(fArray[j]<= maxDay){
-                count++;
-            }
-            else{
-                list.add(count);
-                count=1;
-                maxDay=fArray[j];
-            }
+        while(!queue.isEmpty()&&queue.peek()<=now){
+            queue.poll();
+            count++;
         }
-        list.add(count);
+    
+        answerList.add(count);
+    }
+         System.out.println(answerList);
         
-        //System.out.print(list);
-        // List → 배열 변환
-        int[] answer = new int[list.size()];
-        for (int i = 0; i < list.size(); i++) {
-            answer[i] = list.get(i);
-        }
-
-        
-        return answer;
+        return answerList.stream().mapToInt(i->i).toArray();
     }
 }

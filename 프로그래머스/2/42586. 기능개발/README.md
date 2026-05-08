@@ -1,10 +1,10 @@
 # [level 2] 기능개발 - 42586 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42586) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/42586?utm_source=chatgpt.com) 
 
 ### 성능 요약
 
-메모리: 86.5 MB, 시간: 0.06 ms
+메모리: 77 MB, 시간: 2.56 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2026년 01월 08일 12:42:44
+2026년 05월 08일 22:47:05
 
 ### 문제 설명
 
