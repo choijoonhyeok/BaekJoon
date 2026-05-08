@@ -1,27 +1,40 @@
 import java.util.*;
-
 class Solution {
     public int solution(int[] scoville, int K) {
-
-        PriorityQueue<Integer> pq = new PriorityQueue<>();
         
-        for(int s : scoville){
-            pq.add(s);
+        PriorityQueue <Integer> pq = new PriorityQueue<>();
+        for(int scov :scoville){
+            pq.offer(scov);
         }
-
+        
         int answer = 0;
+              for(int i = 0; i < scoville.length; i++){
 
-        while(pq.size() > 1 && pq.peek() < K){
+            // 가장 작은 값이 K 이상이면 종료
+            if(pq.peek() >= K){
+                return answer;
+            }
+
+            // 섞을 음식이 부족하면 실패
+            if(pq.size() == 1){
+                return -1;
+            }
+
             int first = pq.poll();
             int second = pq.poll();
 
-            int scovResult = first + second * 2;
-            pq.add(scovResult);
+            int result = first + (second * 2);
+
+            pq.offer(result);
 
             answer++;
         }
-
-        if(pq.peek() >= K) return answer;
-        return -1;
+            
+        
+        
+          //System.out.print(pq.poll());
+        
+        
+        return answer;
     }
 }
